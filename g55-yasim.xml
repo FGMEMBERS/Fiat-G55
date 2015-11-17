@@ -1,0 +1,286 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<!-- Fiat G55             : BARANGER Emmanuel (2015) 
+
+     Sources              : https://fr.wikipedia.org/wiki/Fiat_G.55/56
+
+     Wingspan             : 11.85 m  (   38 ft 10    in )
+     Length               :  9.37 m  (   30 ft 9     in )
+     Height               :  3.13 m  (   10 ft 3 1/4 in ) (without the antenna mast)
+     Empty weight         :  2630 kg ( 5798 lb          )
+     Engine               : Fiat RA.1050 R.C.58 Tifone (license-built Daimler-Benz DB 605A-1) liquid-cooled inverted V-12 ( 1475 hp )
+     Max speed            : 623 km/h (  337 kt          ) ( 671 km/h (362.3 kt ) with WEP ) at 7000 m ( 22970 ft )
+     Cruise speed         : 580 km/h (  313 kt          )
+--> 
+<airplane mass="5798" version="YASIM_VERSION_CURRENT">
+  
+  <approach speed="80" aoa="2"  fuel="0.25" glide-angle="4.92">
+    <control-setting axis="/controls/engines/engine[0]/throttle" value="0.3"/>
+    <control-setting axis="/controls/engines/engine[0]/mixture" value="1"/>
+    <control-setting axis="/controls/gear/gear-down" value="1"/>
+    <solve-weight idx="0" weight="180"/>
+  </approach>
+  
+  <cruise speed="313" alt="18000" >
+    <control-setting axis="/controls/engines/engine[0]/throttle" value="0.8"/>
+    <control-setting axis="/controls/engines/engine[0]/mixture" value="0.8" />
+    <control-setting axis="/controls/gear/gear-down" value="0"/>
+    <solve-weight idx="0" weight="180"/>
+  </cruise>
+
+  <cockpit x="0.056" y="0" z="0.81"/>
+
+  <!-- Nez -->
+  <fuselage ax=" 4.637" ay="0" az=" 0.053" bx=" 4.136" by="0" bz=" 0.053" width="0.656" taper="0.5" midpoint="1" idrag="0.4"/>
+  <fuselage ax=" 4.136" ay="0" az=" 0.053" bx=" 3.713" by="0" bz=" 0.064" width="0.827" taper="0.8" midpoint="1" idrag="0.0"/>
+  <!-- haut -->
+  <fuselage ax=" 3.713" ay="0" az=" 0.064" bx=" 0.933" by="0" bz=" 0.271" width="0.893" taper="0.9" midpoint="1" idrag="0.4"/>
+  <fuselage ax=" 0.933" ay="0" az=" 0.271" bx="-2.560" by="0" bz=" 0.266" width="0.893" taper="0.7" midpoint="0" idrag="0.0"/>
+  <fuselage ax="-2.560" ay="0" az=" 0.266" bx="-4.634" by="0" bz=" 0.287" width="0.622" taper="0.1" midpoint="0" idrag="0.0"/>
+  <!--bas -->
+  <fuselage ax=" 3.713" ay="0" az=" 0.064" bx=" 0.935" by="0" bz="-0.166" width="0.893" taper="0.9" midpoint="1" idrag="0.4"/>
+  <fuselage ax=" 0.935" ay="0" az="-0.166" bx="-2.560" by="0" bz=" 0.076" width="0.893" taper="0.7" midpoint="0" idrag="0.0"/>
+  <fuselage ax="-2.560" ay="0" az=" 0.076" bx="-4.634" by="0" bz=" 0.287" width="0.622" taper="0.1" midpoint="0" idrag="0.0"/>
+  <!-- Cockpit -->
+  <fuselage ax=" 0.937" ay="0" az=" 0.562" bx=" 0.473" by="0" bz=" 0.615" width="0.771" taper="0.2" midpoint="1" idrag="0.4"/>
+  <fuselage ax=" 0.473" ay="0" az=" 0.615" bx="-0.070" by="0" bz=" 0.615" width="0.771" taper="0.9" midpoint="0" idrag="0.0"/>
+  <fuselage ax="-0.070" ay="0" az=" 0.615" bx="-1.900" by="0" bz=" 0.587" width="0.699" taper="0.1" midpoint="0" idrag="0.0"/>
+  
+  <wing x="1.38401" y="0" z="-0.4" 
+        chord="2.942" 
+        length="1.821" 
+        taper="0.67" 
+        sweep="1" 
+        camber="0.005">
+        <stall aoa="20" width="1" peak="1.5"/>
+        <flap0 start="0.24" end="1" lift="1.4" drag="1.5"/>
+
+        <control-input axis="/controls/flight/flaps" control="FLAP0"/>
+
+        <control-output control="FLAP0" prop="/surface-positions/flap-pos-norm"/>
+  </wing>
+  
+  <mstab x="1.34998" y="1.823" z="-0.4" 
+         chord="1.980" 
+         length="4.101" 
+         taper="0.62" 
+         sweep="-2.6" 
+         dihedral="4.2">
+         <stall aoa="20" width="1" peak="1.5"/>
+         <flap0 start="0.00" end="0.38" lift="1.4" drag="1.5"/>
+         <flap1 start="0.38" end="0.87" lift="1.2" drag="1.1"/>
+
+         <control-input axis="/controls/flight/flaps" control="FLAP0"/>
+         <control-input axis="/controls/flight/aileron" control="FLAP1" split="true"/>
+         <control-input axis="/controls/flight/aileron-trim" control="FLAP1" split="true"/>
+
+         <control-output control="FLAP0" prop="/surface-positions/flap-pos-norm"/>
+         <control-output control="FLAP1" side="left" prop="surface-positions/left-aileron-pos-norm"/>
+         <control-output control="FLAP1" side="right" prop="surface-positions/right-aileron-pos-norm"/>
+
+         <control-speed control="FLAP0" transition-time="4"/>
+  </mstab>
+  
+  <hstab x="-3.696" y="0" z="0.26" 
+         chord="1.365" 
+         length="1.688" 
+         taper="0.51"
+         sweep="5">
+         <stall aoa="18" width="1" peak="1.5"/>
+         <flap0 start="0" end="1" lift="1.1" drag="1.0"/>
+
+         <control-input axis="/controls/flight/elevator" control="FLAP0"/>
+         <control-input axis="/controls/flight/elevator-trim" control="FLAP0"/>
+
+         <control-output control="FLAP0" prop="/surface-positions/elevator-pos-norm"/>
+  </hstab>
+
+  <vstab x="-3.5" y="0" z="0.296" 
+         chord="1.85" 
+         length="1.45" 
+         taper="0.40" 
+         sweep="10">
+         <stall aoa="16" width="1" peak="1.5"/>
+         <flap0 start="0" end="1" lift="1.2" drag="1.1"/>
+
+         <control-input axis="/controls/flight/rudder" square="true" control="FLAP0" invert="true"/>
+         <control-input axis="/controls/flight/rudder-trim" control="FLAP0" invert="true"/>
+
+         <control-output control="FLAP0" prop="/surface-positions/rudder-pos-norm"  min="1" max="-1"/>
+  </vstab>
+
+  <!-- Engines   source            : https://en.wikipedia.org/wiki/Daimler-Benz_DB_605
+
+                 name              : Fiat RA.1050 R.C.58 Tifone (license-built Daimler-Benz DB 605A-1)
+                 type              : 12-cylinder liquid-cooled supercharged 60 deg inverted Vee aircraft piston engine
+                 power cruise      : 1775 hp at 2800 rpm for takeoff with MW-50 injection
+                                   : 1677 hp at 2800 rpm at 4000 m (13120 ft) for maximum power with MW-50 injection
+                                   : 1065 hp at 2300 rpm at 5500 m (18000 ft) for max continuous
+                 compression       : 7.5/7.3:1 with 87-octane fuel; 8.5/8.3:1 with 100-octane fuel
+                 weight            : 756 kg ( 1667 lb  )
+                 displacement      : 35.7 L ( 2176 in3 )
+  -->
+  <propeller x="3.25329" y="0" z="0.05952"
+             mass="1667"
+             radius="1.60"
+             moment="46"
+             cruise-speed="313"
+             cruise-alt="18000"
+             cruise-power="1065"
+             cruise-rpm="2300"
+             takeoff-power="1677"
+             takeoff-rpm="2800">
+             <actionpt x="4.32329" y="0" z="0.05952"/>
+             <control-input axis="/controls/engines/engine[0]/propeller-pitch" control="ADVANCE"/>
+             <piston-engine eng-rpm="2800"
+                            eng-power="1775"
+                            displacement="2176"
+                            compression="8.3"
+                            turbo-mul="2.9"
+                            turbo-lag="0.5"
+                            wastegate-mp="52">
+                            <control-input control="THROTTLE" axis="/controls/engines/engine[0]/throttle"/>
+                            <control-input control="STARTER" axis="/controls/engines/engine[0]/starter"/>
+                            <control-input control="MAGNETOS" axis="/controls/engines/engine[0]/magnetos"/>
+                            <control-input control="MIXTURE" axis="/controls/engines/engine[0]/mixture"/>
+             </piston-engine>
+  </propeller>
+
+  <!-- GUNS RECOIL Left Ext -->
+  <thruster x="1.94481" y="2.09585" z="-0.38756"
+            vx="-1" vy="0" vz="0.043"
+            thrust="718.4">
+            <control-input  axis="/controls/armament/trigger" control="THROTTLE"/>
+  </thruster>
+  
+  <!-- GUNS RECOIL Left Int -->
+  <thruster x="1.24421" y="0.18162" z="0.57359"
+            vx="-1" vy="0" vz="0.043"
+            thrust="718.4">
+            <control-input  axis="/controls/armament/trigger" control="THROTTLE"/>
+  </thruster>
+  
+  <!-- GUNS RECOIL Noze Canon -->
+  <thruster x="1.24421" y="0" z="0.0605"
+            vx="-1" vy="0" vz="0.043"
+            thrust="718.4">
+            <control-input  axis="/controls/armament/trigger" control="THROTTLE"/>
+  </thruster>
+  
+  <!-- GUNS RECOIL Right Int -->
+  <thruster x="1.24421" y="-0.18162" z="0.57359"
+            vx="-1" vy="0" vz="0.043"
+            thrust="718.4">
+            <control-input  axis="/controls/armament/trigger" control="THROTTLE"/>
+  </thruster>
+  
+  <!-- GUNS RECOIL Right Ext -->
+  <thruster x="1.94481" y="-2.09585" z="-0.38756"
+            vx="-1" vy="0" vz="0.043"
+            thrust="718.4">
+            <control-input  axis="/controls/armament/trigger" control="THROTTLE"/>
+  </thruster>
+  
+  <!-- left main -->
+  <gear x="2.27317" y="1.77367" z="-1.79072"
+        compression="0.3"
+        spring="0.7"
+        damp="4"
+        sfric="0.5"
+        dfric="0.5">
+        <control-input axis="/controls/gear/brake-left" control="BRAKE"/>
+        <control-input axis="/controls/gear/brake-parking" control="BRAKE"/>
+        <control-input axis="/controls/gear/gear-down" control="EXTEND"/>
+
+        <control-output control="EXTEND" prop="/gear/gear[0]/position-norm"/>
+
+        <control-speed control="EXTEND" transition-time="6"/>
+  </gear>
+
+  <!-- right main -->
+  <gear x="2.27317" y="-1.77367" z="-1.79072"
+        compression="0.3"
+        spring="0.7"
+        damp="4"
+        sfric="0.5"
+        dfric="0.5">
+        <control-input axis="/controls/gear/brake-right" control="BRAKE"/>
+        <control-input axis="/controls/gear/brake-parking" control="BRAKE"/>
+        <control-input axis="/controls/gear/gear-down" control="EXTEND"/>
+
+        <control-output control="EXTEND" prop="/gear/gear[1]/position-norm"/>
+
+        <control-speed control="EXTEND" transition-time="5"/>
+  </gear>
+
+  <!-- Tail wheel -->
+  <gear x="-3.38933" y="0" z="-0.45295"
+        compression="0.2"
+        sfric="0.5"
+        dfric="0.3">
+        <control-input axis="/controls/flight/rudder" control="STEER" square="true" src0="-1.0" src1="1.0" dst0="0.8" dst1="-0.8"/>
+        <control-input axis="/controls/gear/gear-down" control="EXTEND"/>
+        
+        <control-output control="EXTEND" prop="/gear/gear[2]/position-norm"/>
+        
+        <control-speed control="EXTEND" transition-time="4"/>
+  </gear>
+
+  <!-- Fake GEARS for crash-landing / splash -->
+  <!-- nose -->
+  <gear x="4.32330" y="0" z="-1.54044"
+        ignored-by-solver="1"
+        on-water="1"
+        compression="0.35"
+        spring="0.1"
+        damp="7.5"
+        dfric="0.1"
+        sfric ="0.1">
+        <control-input  axis="/controls/gear/body-ground-friction" control="BRAKE"/>
+  </gear>
+   
+  <!-- belly -->
+  <gear x="0.939" y="0" z="-0.612"
+        ignored-by-solver="1"
+        on-water="1"
+        compression="0.05"
+        spring="0.2"
+        damp="7.5"
+        dfric="0.6"
+        sfric ="0.6">
+        <control-input  axis="/controls/gear/body-ground-friction" control="BRAKE"/>
+  </gear>
+   
+  <!-- wingtips -->
+  <gear x="1.573" y="5.918" z="-0.09"
+        ignored-by-solver="1"
+        on-water="1"
+        compression="0.12"
+        spring="0.2"
+        damp="7.5"
+        dfric="0.6"
+        sfric ="0.6">
+        <control-input  axis="/controls/gear/body-ground-friction" control="BRAKE"/>
+  </gear>
+   
+  <gear x="1.573" y="-5.918" z="-0.09"
+        ignored-by-solver="1"
+        on-water="1"
+        compression="0.12"
+        spring="0.2"
+        damp="7.5"
+        dfric="0.6"
+        sfric ="0.6">
+        <control-input  axis="/controls/gear/body-ground-friction" control="BRAKE"/>
+  </gear>
+   
+  <weight x="0.13" y="0" z="0.23" mass-prop="/sim/weight[0]/weight-lb"/>
+  
+  <!-- Fuel  -->  
+  <tank x=" 1.3" y="0" z="-0.32" capacity="800"/>
+  <tank x="-0.8" y="0" z=" 0.20" capacity="800"/>
+
+  <!-- Mass displacment
+  <ballast x="-3.8" y=" 0" z="-1" mass="500"/> -->
+  
+</airplane>
